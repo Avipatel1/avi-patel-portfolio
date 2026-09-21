@@ -25,7 +25,8 @@ Requires Node.js 22.12+ (verified with 22.15.0) and npm.
 
 ## Content and scope
 
-Both projects are explicitly in development. Expandable project notes describe
+The N-body project is in development; the chaos project is a research prototype.
+Expandable project notes describe
 the current approach and limitations; dedicated case-study pages are a future
 addition. Lab reports and the research navigation item are omitted until content
 is available. The résumé is supplied by Avi Patel.
@@ -43,3 +44,18 @@ To regenerate them, pass your two data paths:
 
 No project source directories or full simulation datasets are required to run
 the website. Fonts are local system fonts; no external font service is needed.
+
+The chaos project notes include the recorded 100-epoch, seed-42 comparison from
+project revision 853977f. Diagnostic PNGs and unmodified metrics JSON files were
+copied from its docs/ directory into public/images/ and public/results/.
+These are saved experimental results, not training rerun by the website.
+The summary distinguishes one-step accuracy from recursive forecasting and
+documents the single-trajectory and reference-energy-drift limitations.
+
+The N-body entry reflects project revision edb1d7d. Its current Sun-relative
+preview is copied from docs/orbits.png. The downloadable analyzer report was
+regenerated from the saved default dataset using analyze_physics.py; the simulator
+was not rerun. The orbital table reproduces that report, including insufficient
+outer-planet coverage. Conservation, convergence, and performance benchmarks
+remain future work. The older orbital SVG generator is retained as an optional
+asset tool; the homepage uses the updated PNG from the project instead.

@@ -1,0 +1,12 @@
+﻿25,000 samples; 12.499 years between first and last sample
+Planet         a (AU)    T (years)      T^2/a^3
+Mercury      0.387031     0.240778     0.999989
+Venus        0.722990     0.614751     1.000004
+Earth        0.999980     0.999980     1.000019
+Mars         1.523874     1.881179     1.000030
+Jupiter    Insufficient coverage: need two upward crossings
+Saturn     Insufficient coverage: need two upward crossings
+Uranus     Insufficient coverage: need two upward crossings
+Neptune    Insufficient coverage: need two upward crossings
+Heliocentric estimates; perturbations and finite timesteps affect the ratios.
+This diagnostic does not measure energy conservation or prove stability.

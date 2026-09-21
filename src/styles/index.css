@@ -56,7 +56,9 @@ h2 { font-family: var(--font-serif); font-size: clamp(30px, 3.2vw, 42px); line-h
 .project-figure { margin: 0; background: #100e17; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #ffffff0a; }
 .project-figure img { display: block; width: 100%; height: auto; }
 .project-figure figcaption { color: #a99bbb; font-family: monospace; font-size: 8px; line-height: 1.8; letter-spacing: 1px; padding: 18px 24px 24px; }
-.project-copy { padding: 32px; }
+.project-copy { padding: 32px; min-width: 0; }
+.results-table-wrap { overflow-x: auto; }
+.results-table-wrap:focus-visible { outline: 2px solid #ccb6ff; outline-offset: 3px; }
 .project-copy .eyebrow { font-size: 8px; letter-spacing: 1.4px; }
 .status { display: inline-flex; align-items: center; gap: 6px; color: #b9afc5; font-size: 9px; white-space: nowrap; }
 .status > span { width: 4px; height: 4px; border-radius: 50%; background: #be8591; }
@@ -72,6 +74,15 @@ h2 { font-family: var(--font-serif); font-size: clamp(30px, 3.2vw, 42px); line-h
 .project-details[open] summary svg { transform: rotate(45deg); }
 .project-details h4 { color: #dfd5ee; font-size: 12px; font-weight: 500; margin: 0 0 6px; }
 .project-details p { color: #aaa3b5; font-size: 13px; line-height: 1.8; }
+.project-finding { margin-top: 18px; padding-left: 14px; border-left: 2px solid #b59aff80; color: #d4c5e5; font-size: 13px; line-height: 1.8; }
+.project-results table { width: 100%; margin-block: 20px; border-collapse: collapse; font-size: 11px; font-variant-numeric: tabular-nums; }
+.project-results caption { text-align: left; color: #bfb1d0; margin-bottom: 10px; font-size: 11px; }
+.project-results th, .project-results td { padding: 10px 5px; border-bottom: 1px solid #ffffff18; text-align: right; }
+.project-results th { font-weight: 500; color: #d6cae3; }
+.project-results th:first-child { text-align: left; overflow-wrap: anywhere; }
+.result-figure { margin: 22px 0 0; }
+.result-figure img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.result-figure figcaption { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; padding-top: 10px; font-size: 11px; color: #d4bafa; }
 .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 10px; }
 .about-section h2 { line-height: 1.4; }
 .about-lead { font-family: var(--font-serif); font-size: 24px; line-height: 1.5; color: #ddd5e8; }
