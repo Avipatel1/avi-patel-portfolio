@@ -4,6 +4,8 @@ import { OrbitalIllustration } from './components/OrbitalIllustration'
 import { ProjectCard } from './components/ProjectCard'
 import { ContactForm } from './components/ContactForm'
 import { projects } from './data/projects'
+import { ResearchCard } from './components/ResearchCard'
+import { research, laboratoryRepository } from './data/research'
 export default function App() {
   return (
     <>
@@ -24,8 +26,16 @@ export default function App() {
           <div className="section-heading"><div><p className="eyebrow">01 / SELECTED WORK</p><h2>Questions, translated into code.</h2></div><p>Independent projects in simulation<br className="hidden lg:block" /> and scientific machine learning.</p></div>
           <div className="space-y-7">{projects.map((project) => <ProjectCard key={project.id} project={project} />)}</div>
         </section>
+        <section id="experimental-work" className="section shell" aria-labelledby="experimental-work-title">
+          <div className="section-heading research-heading">
+            <div><p className="eyebrow">02 / EXPERIMENTAL PHYSICS</p><h2 id="experimental-work-title">Testing theory against the physical world.</h2></div>
+            <p>Selected undergraduate physics laboratory investigations involving experimental design, quantitative analysis, uncertainty, and comparison between theoretical and measured behaviour.</p>
+          </div>
+          <div className="research-grid">{research.map((report) => <ResearchCard key={report.id} report={report} />)}</div>
+          <a className="text-link research-repository-link" href={laboratoryRepository} target="_blank" rel="noopener noreferrer" aria-label="Explore the complete laboratory-report repository on GitHub (opens in a new tab)">Explore all laboratory reports <Icon /></a>
+        </section>
         <section id="about" className="section shell about-section">
-          <div><p className="eyebrow">02 / A LITTLE BACKGROUND</p><h2>A foundation in physics.<br /><em>A habit of exploring.</em></h2></div>
+          <div><p className="eyebrow">03 / A LITTLE BACKGROUND</p><h2>A foundation in physics.<br /><em>A habit of exploring.</em></h2></div>
           <div>
             <p className="about-lead">I’m interested in what happens when mathematical ideas become something you can build, test, and explore.</p>
             <p className="body-copy mt-5">I hold a BSc in physics with a minor in computer science. Through independent projects, I’m developing practical experience modeling physical systems, working with data, and examining how computational methods behave.</p>
@@ -35,11 +45,11 @@ export default function App() {
           </div>
         </section>
         <section id="resume" className="shell resume-section">
-          <div><p className="eyebrow">03 / THE FULL PICTURE</p><h2>My background, on paper.</h2><p className="body-copy mt-3">Education, projects, skills, and employment history.</p></div>
+          <div><p className="eyebrow">04 / THE FULL PICTURE</p><h2>My background, on paper.</h2><p className="body-copy mt-3">Education, projects, skills, and employment history.</p></div>
           <a className="button button-outline" href="/Avi_Patel_Resume.pdf" download>Download résumé <span className="pdf-label">PDF</span><Icon name="download" /></a>
         </section>
         <section id="contact" className="section shell contact-section">
-          <div><p className="eyebrow">04 / GET IN TOUCH</p><h2>Let’s start<br /><em>a conversation.</em></h2><p className="body-copy mt-6">Have an entry-level opportunity in software, data, or scientific computing? I’d like to hear about it.</p><a className="email-link" href="mailto:avixpatel@hotmail.com">avixpatel@hotmail.com <Icon /></a></div>
+          <div><p className="eyebrow">05 / GET IN TOUCH</p><h2>Let’s start<br /><em>a conversation.</em></h2><p className="body-copy mt-6">Have an entry-level opportunity in software, data, or scientific computing? I’d like to hear about it.</p><a className="email-link" href="mailto:avixpatel@hotmail.com">avixpatel@hotmail.com <Icon /></a></div>
           <ContactForm />
         </section>
       </main>

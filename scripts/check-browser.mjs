@@ -12,6 +12,37 @@ try {
   expect(response.status()).toBe(200)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Understanding')
   await expect(page.locator('.project-card')).toHaveCount(2)
+  const experimental = page.locator('#experimental-work')
+  await expect(experimental.getByRole('article')).toHaveCount(4)
+  expect(await page.locator('main > section').evaluateAll(sections => sections.map(section => section.id))).toEqual(['home', 'projects', 'experimental-work', 'about', 'resume', 'contact'])
+  for (const link of await page.getByRole('navigation').getByRole('link').all()) {
+    const anchor = await link.getAttribute('href')
+    await expect(page.locator(anchor)).toHaveCount(1)
+  }
+  await page.getByRole('navigation').getByRole('link', { name: 'Experimental Work' }).focus()
+  await page.keyboard.press('Enter')
+  await expect(page).toHaveURL(/#experimental-work$/)
+  await expect(experimental.getByRole('heading', { level: 2 })).toBeInViewport()
+  const expectedReports = [
+    'Experiment_7__Speed_of_Light.pdf',
+    'Experiment_11__Holographic_Interferometry_of_a_Cantilever_using_Instant_Holographic_Film.pdf',
+    'Experiment_33__Electromotive_Response_to_Moving_Magnetic_Sources.pdf',
+    'Experiment_47__Zeeman_Effect.pdf',
+  ]
+  const reportLinks = experimental.getByRole('link', { name: /^View report:/ })
+  for (let index = 0; index < expectedReports.length; index++) {
+    await expect(reportLinks.nth(index)).toHaveAttribute('href', 'https://github.com/Avipatel1/Lab_reports/blob/main/' + expectedReports[index])
+  }
+  for (const link of await experimental.getByRole('link').all()) {
+    await expect(link).toHaveAttribute('target', '_blank')
+    await expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+  }
+  await reportLinks.first().focus()
+  await page.keyboard.press('Tab')
+  await expect(reportLinks.nth(1)).toBeFocused()
+  expect(await reportLinks.nth(1).evaluate(link => getComputedStyle(link).outlineStyle)).toBe('solid')
+  expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto')
+  await experimental.screenshot({ path: '.artifacts/experimental-desktop.png' })
   await page.locator('#projects').scrollIntoViewIfNeeded()
   await expect.poll(() => page.locator('.project-figure img').evaluateAll(images => images.every(img => img.complete && img.naturalWidth > 0))).toBe(true)
   await page.getByText('Project notes', { exact: true }).first().click()
@@ -54,6 +85,8 @@ try {
     await page.setViewportSize({ width, height: 900 })
     const fits = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)
     expect(fits, 'No horizontal overflow at ' + width + 'px').toBe(true)
+    const columnCount = await page.locator('.research-grid').evaluate(grid => getComputedStyle(grid).gridTemplateColumns.split(' ').length)
+    expect(columnCount).toBe(width < 768 ? 1 : 2)
   }
   await page.setViewportSize({ width: 390, height: 844 })
   await page.getByRole('button', { name: 'Menu' }).click()
@@ -61,6 +94,12 @@ try {
   await page.getByRole('navigation').getByRole('link', { name: 'Projects' }).click()
   await expect(page.getByRole('navigation')).toBeHidden()
   await expect(page).toHaveURL(/#projects$/)
+  await page.getByRole('button', { name: 'Menu' }).click()
+  await page.getByRole('navigation').getByRole('link', { name: 'Experimental Work' }).click()
+  await expect(page.getByRole('navigation')).toBeHidden()
+  await expect(page).toHaveURL(/#experimental-work$/)
+  await expect(experimental.getByRole('heading', { level: 2 })).toBeInViewport()
+  await experimental.screenshot({ path: '.artifacts/experimental-mobile.png' })
   await page.getByRole('button', { name: 'Menu' }).click()
   await page.getByRole('navigation').getByRole('link', { name: 'About' }).focus()
   await page.keyboard.press('Escape')

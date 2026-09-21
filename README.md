@@ -28,8 +28,10 @@ Requires Node.js 22.12+ (verified with 22.15.0) and npm.
 The N-body project is in development; the chaos project is a research prototype.
 Expandable project notes describe
 the current approach and limitations; dedicated case-study pages are a future
-addition. Lab reports and the research navigation item are omitted until content
-is available. The résumé is supplied by Avi Patel.
+addition. Selected undergraduate laboratory investigations appear between the
+computational projects and About, using ResearchCard and typed content in
+src/data/research.ts. Report links open GitHub PDFs in a new tab. The résumé is
+supplied by Avi Patel.
 
 The contact form opens a populated mailto draft in the visitor's email client.
 It does not send, store, or submit messages to a backend. The direct email link

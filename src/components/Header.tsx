@@ -1,5 +1,5 @@
 import { useState } from 'react'
-const links = [['Projects', '#projects'], ['About', '#about'], ['Résumé', '#resume'], ['Contact', '#contact']]
+const links = [['Projects', '#projects'], ['Experimental Work', '#experimental-work'], ['About', '#about'], ['Résumé', '#resume'], ['Contact', '#contact']]
 export function Header() {
   const [open, setOpen] = useState(false)
   return (
