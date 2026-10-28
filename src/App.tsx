@@ -1,11 +1,12 @@
+import { ContactForm } from './components/ContactForm'
 import { Header } from './components/Header'
 import { Icon } from './components/Icon'
 import { OrbitalIllustration } from './components/OrbitalIllustration'
 import { ProjectCard } from './components/ProjectCard'
-import { ContactForm } from './components/ContactForm'
-import { projects } from './data/projects'
 import { ResearchCard } from './components/ResearchCard'
-import { research, laboratoryRepository } from './data/research'
+import { projects } from './data/projects'
+import { laboratoryRepository, research } from './data/research'
+
 export default function App() {
   return (
     <>

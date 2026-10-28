@@ -16,8 +16,8 @@ Requires Node.js 22.12+ (verified with 22.15.0) and npm.
 
     public/                 Résumé, favicon, static simulation previews
     src/
-      components/           Header, project card, contact form, illustration, icons
-      data/projects.ts      Typed project content and repository links
+      components/           Header, project and research cards, contact form, illustration, icons
+      data/                 Typed project and research content, repository links
       styles/index.css      Tailwind import, theme, responsive styles
       App.tsx               Homepage composition and copy
       main.tsx              React entry point
